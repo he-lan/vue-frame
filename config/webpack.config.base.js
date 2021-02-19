@@ -42,6 +42,7 @@ module.exports={
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template:path.resolve(__dirname,'../index.html'),
+            title: 'vue项目框架',
             inject:'body',
             minify:{
                 removeComments:true
