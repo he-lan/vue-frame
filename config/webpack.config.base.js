@@ -21,21 +21,38 @@ module.exports={
     module:{
         rules:[
             {
-                test:/\.vue$/,
-                use:'vue-loader'
+                test: /\.vue$/,
+                use: ['thread-loader', 'vue-loader'],
             },
             {
-                test:/\.(png|jpg|jpeg|svg)$/,
-                use:[
-                    {
-                        loader:'url-loader',
-                        options:{
-                            limit:1024,//这里的单位是b
-                            name:'images/[name][hash].[ext]' //打包后输出路径
-                        }
-                    }
-                ]
-            }
+                test: /\.js$/,
+                use: ['thread-loader', 'babel-loader'],
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    esModule: false,
+                    limit: 10000,
+                    name: 'static/assets/images/[name].[hash:7].[ext]',
+                },
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/assets/media/[name].[hash:7].[ext]',
+                },
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/assets/fonts/[name].[hash:7].[ext]',
+                },
+            },
         ]
     },
     plugins:[

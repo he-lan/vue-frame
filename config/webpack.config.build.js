@@ -10,21 +10,21 @@ module.exports=merge(base,{
     },
     optimization: {
         splitChunks: {
-          cacheGroups: {
-            styles: {
-              name: 'styles',
-              test: /\.css$/,
-              chunks: 'all',
-              enforce: true
-            },
-            vendor:{
-              test: /node_modules/,
-              name: 'vendor',
-              chunks:'all'
-          }
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                },
+                vendor:{
+                    test: /node_modules/,
+                    name: 'vendor',
+                    chunks:'all'
+                }
+            }
         }
-        }
-      },
+    },
     module:{
         rules:[
             {
@@ -33,9 +33,24 @@ module.exports=merge(base,{
                     {loader:MiniCssExtractPlugin.loader},
                     'css-loader'
                 ]
-                    
-                
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [postcssPresetEnv(/* pluginOptions */)],
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
+                ],
+            },
         ]
     },
     plugins:[

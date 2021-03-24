@@ -4,7 +4,7 @@ const webpack=require('webpack')
 
 module.exports=merge(base,{
     devServer:{
-        port:8088,
+        port:8080,
         host:'127.0.0.1',
         open:true,
         hot:true,
@@ -15,7 +15,21 @@ module.exports=merge(base,{
             {
                 test:/\.css$/,
                 use:['style-loader','css-loader']
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
+                ],
+            },
         ]
     },
     plugins:[
