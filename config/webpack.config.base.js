@@ -61,6 +61,7 @@ module.exports={
             template:path.resolve(__dirname,'../index.html'),
             title: 'vue项目框架',
             inject:'body',
+            favicon:'',//项目图标
             minify:{
                 removeComments:true
             }

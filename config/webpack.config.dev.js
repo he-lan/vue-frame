@@ -8,7 +8,13 @@ module.exports=merge(base,{
         host:'127.0.0.1',
         open:true,
         hot:true,
-        overlay:{erros:true}
+        overlay:{erros:true},
+        proxy: {
+            '/managercenter': {
+                target: `http://192.168.1.96:9999/`,
+                changeOrigin: true,
+            },
+        },
     },
     module:{
         rules:[
