@@ -1,5 +1,5 @@
 import axios from 'axios'
-import  { Loading, Notification, MessageBox } from 'element-ui'
+import  {  Notification, MessageBox } from 'element-ui'
 
 const HTTP_SUCCESS_CODE=200;
 let messageBoxInstance;
@@ -62,7 +62,7 @@ instance.interceptors.response.use(
                     //     path:'/login',
                     //     query:{redirect:router.currentRoute.fullpath}
                     // });
-                    loginInvalid('登录过期，请重新进行登录sssssss');
+                    loginInvalid('登录过期，请重新进行登录');
                     break;
                 case 403:
                     //403token过期
@@ -80,7 +80,7 @@ instance.interceptors.response.use(
                     break;
                 default:
                     Notification.error({
-                        message:error.response.data.message,
+                        message:error.response.data?.message??'false',
                         dangerouslyUseHTMLString:true
                     });
 
