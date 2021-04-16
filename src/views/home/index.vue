@@ -1,6 +1,6 @@
 <template>
   <div class="home-wrapper" @click="clickEvent">
-    home
+    <div class="title">test</div>
   </div>
 </template>
 
@@ -23,5 +23,13 @@ name: "index",
 </script>
 
 <style scoped lang="scss">
+.home-wrapper{
 
+  height: 100px;
+  width: 100px;
+  background-color: $hs-primary-color;
+  .title{
+    color:$hs-success-color;
+  }
+}
 </style>

@@ -1,6 +1,8 @@
+const path=require('path')
 const base=require('./webpack.config.base')
 const {merge}=require('webpack-merge')
 const webpack=require('webpack')
+
 
 module.exports=merge(base,{
     devServer:{
@@ -34,8 +36,41 @@ module.exports=merge(base,{
                     {
                         loader: 'sass-loader',
                     },
+                    {
+                        loader: 'sass-resources-loader',
+                        options:{
+                            resources:path.resolve(__dirname,'../src/assets/style/variables.scss'),
+                        }
+                    }
                 ],
             },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                javascriptEnabled: true,
+                            },
+                        },
+                    },
+                    {
+                        loader: 'style-resources-loader',
+                        options: {
+                            patterns: path.resolve(__dirname,'../src/assets/style/testLess.less'),
+                            injector: 'append',
+                        },
+                    },
+                ],
+            },
+
         ]
     },
     plugins:[

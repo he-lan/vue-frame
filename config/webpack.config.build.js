@@ -49,6 +49,39 @@ module.exports=merge(base,{
                     {
                         loader: 'sass-loader',
                     },
+                    {
+                        loader: 'style-resources-loader',
+                        options:{
+                                patterns:path.resolve(__dirname,'../src/assets/style/variables.scss'),
+                                injector:'append',
+                        }
+                    }
+                ],
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                javascriptEnabled: true,
+                            },
+                        },
+                    },
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: path.resolve(__dirname,'../src/assets/style/testLess.less'),
+                            injector: 'append',
+                        },
+                    },
                 ],
             },
         ]

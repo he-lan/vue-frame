@@ -1,8 +1,7 @@
 //这里用来配置开发和生产中的公共的webpack配置
 const path=require('path')
-const {VueLoaderPlugin}=require('vue-loader')
 const HtmlWebpackPlugin=require('html-webpack-plugin')
-// console.log( this.getFullTemplatePath(this.options.template, compiler.context) )
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports={
     //输入
     entry: path.join(__dirname, '../src/index.js'),
