@@ -11,8 +11,14 @@ const home={
                 url:'/managercenter/usercenter/authorityById',
                 method:'GET',
                 params:args
-            }).catch(err=>{
-                console.log(err)
+            })
+            return data
+        },
+        async getTestData({commit},args){
+            const {data}=await request({
+                url:'/api/test/',
+                method:'GET',
+                params:args
             })
             return data
         }

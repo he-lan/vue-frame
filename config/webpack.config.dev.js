@@ -2,6 +2,7 @@ const path=require('path')
 const base=require('./webpack.config.base')
 const {merge}=require('webpack-merge')
 const webpack=require('webpack')
+const apiMocker=require('mocker-api')
 
 
 module.exports=merge(base,{
@@ -10,12 +11,19 @@ module.exports=merge(base,{
         host:'127.0.0.1',
         open:true,
         hot:true,
-        overlay:{erros:true},
+        overlay:{errors:true},
+        before(app){
+            apiMocker(app,path.resolve(__dirname,'../mock/index.js'),{
+                changeHost:true
+            })
+        },
         proxy: {
             '/managercenter': {
                 target: `http://192.168.1.96:9999/`,
                 changeOrigin: true,
             },
+
+
         },
     },
     module:{

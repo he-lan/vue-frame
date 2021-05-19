@@ -15,7 +15,7 @@ const store=new Vuex.Store({
     actions:{}
 });
 if(module.hot){
-    //使action和mutation成为可热重载模块
+    //使action和mutation成为可热重载模块(修改编辑action或mutation时页面不用全部刷新重新加载）
     module.hot.accept(
         [
             './modules/home'

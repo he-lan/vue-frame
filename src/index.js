@@ -6,6 +6,7 @@ import store from '../src/store'
 import router from './router'
 import '../src/assets/style/global.scss';
 
+
 Vue.prototype.$qs=qs
 
 // const root=document.createElement('div');

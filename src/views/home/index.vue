@@ -1,6 +1,7 @@
 <template>
   <div class="home-wrapper" @click="clickEvent">
     <div class="title">test</div>
+    <div>kkkk</div>
   </div>
 </template>
 
@@ -11,8 +12,13 @@ name: "index",
   data(){
     return{}
   },
+  mounted() {
+  this.getTestData({id:1}).then(res=>{
+    console.log(res,'kkkkkkkk')
+    }).catch(err=>console.log(err))
+  },
   methods:{
-  ...mapActions('home',['getLists']),
+  ...mapActions('home',['getLists','getTestData']),
     clickEvent(){
       this.getLists({userId: 1}).then(res=>{
         console.log('resssssss: ',res)
